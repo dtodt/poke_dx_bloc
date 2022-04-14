@@ -1,16 +1,18 @@
-# pokedx
+# Poke DX
 
-A new Flutter project.
+A clean Pokedex experience with Flutter.
 
-## Getting Started
+> Check it live: [site]
 
-This project is a starting point for a Flutter application.
+## Tests
 
-A few resources to get you started if this is your first Flutter project:
+```sh
+# run the tests
+flutter test
+# run the tests with coverage
+flutter test --coverage
+# generate html reports for coverage
+genhtml ./coverage/lcov.info -o coverage/html
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[site]: https://poke-dx.web.app/
