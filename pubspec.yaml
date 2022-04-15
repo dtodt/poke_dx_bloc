@@ -25,12 +25,15 @@ dependencies:
     sdk: flutter
 
   http: ^0.13.4
+  infinite_scroll_pagination: ^3.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^1.0.4
+
+  mocktail: ^0.3.0
 
 flutter:
   uses-material-design: true
