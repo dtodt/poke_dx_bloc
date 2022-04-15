@@ -48,3 +48,7 @@ const kMeyResponse = PokemonResponse(
   previous: '',
   results: [kMew],
 );
+
+///? Page params
+const kParamUrl = 'https://pokeapi.co/api/v2/pokemon?offset=10&limit=1';
+const kNoParamUrl = 'https://pokeapi.co/api/v2/pokemon';
