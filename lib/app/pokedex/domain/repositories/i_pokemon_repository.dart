@@ -3,6 +3,6 @@ import 'package:pokedx/app/pokedex/domain/value_objects/page_params.dart';
 
 ///? Pokemon repository contract.
 abstract class IPokemonRepository {
-  /// Fetch a page of pokemon.
+  /// Fetch a list of pokemon.
   Future<List<Pokemon>> list(PageParams params);
 }
