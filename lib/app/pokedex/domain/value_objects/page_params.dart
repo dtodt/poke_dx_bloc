@@ -9,4 +9,9 @@ class PageParams {
   final int offset;
 
   factory PageParams.initial() => const PageParams(limit: 20, offset: 0);
+
+  @override
+  String toString() {
+    return 'limit=$limit&offset=$offset';
+  }
 }
