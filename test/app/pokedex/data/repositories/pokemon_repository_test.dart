@@ -2,9 +2,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pokedx/app/pokedex/data/datasources/i_pokemon_remote_ds.dart';
 import 'package:pokedx/app/pokedex/data/repositories/pokemon_repository.dart';
-import 'package:pokedx/app/pokedex/domain/entities/pokemon.dart';
 import 'package:pokedx/app/pokedex/domain/repositories/i_pokemon_repository.dart';
 import 'package:pokedx/app/pokedex/domain/value_objects/page_params.dart';
+import 'package:pokedx/app/pokedex/domain/value_objects/pokemon_response.dart';
 
 import '../../../../constants.dart';
 import '../../../../mocks.dart';
@@ -20,9 +20,9 @@ void main() {
 
   test('should return a list of pokemons', () async {
     when(() => datasource.list(PageParams.initial()))
-        .thenAnswer((_) => Future.value([kMewMap]));
+        .thenAnswer((_) => Future.value(kMewResponseMap));
 
     final result = await repository.list(PageParams.initial());
-    expect(result, isA<List<Pokemon>>());
+    expect(result, isA<PokemonResponse>());
   });
 }

@@ -1,4 +1,5 @@
 import 'package:pokedx/app/pokedex/domain/entities/pokemon.dart';
+import 'package:pokedx/app/pokedex/domain/value_objects/pokemon_response.dart';
 
 ///? Pokemon Entity
 const kCharizardMap = {
@@ -34,3 +35,16 @@ const kMewResponseMap = {
   'previous': null,
   'results': [kMewMap]
 };
+
+const kCharizardResponse = PokemonResponse(
+  count: 1,
+  next: 'https://pokeapi.co/api/v2/pokemon?offset=6&limit=1',
+  previous: 'https://pokeapi.co/api/v2/pokemon?offset=4&limit=1',
+  results: [kCharizard],
+);
+const kMeyResponse = PokemonResponse(
+  count: 1,
+  next: '',
+  previous: '',
+  results: [kMew],
+);
