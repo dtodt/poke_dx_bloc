@@ -5,8 +5,6 @@ abstract class PokemonState {}
 
 class PokemonInitial implements PokemonState {}
 
-class PokemonLoading implements PokemonState {}
-
 class PokemonLoaded implements PokemonState {
   const PokemonLoaded(this.pokemons, {this.nextPage});
 

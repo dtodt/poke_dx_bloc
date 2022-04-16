@@ -16,7 +16,7 @@ void main() {
   });
 
   blocTest<PokemonBloc, PokemonState>(
-    'should emit pokemon loading, loaded',
+    'should emit pokemon loaded',
     build: () {
       when(() => fetchUsecase.call(PageParams.initial()))
           .thenAnswer((_) async => kCharizardResponse);
@@ -24,7 +24,6 @@ void main() {
     },
     act: (bloc) => bloc.add(FetchPokemonEvent(PageParams.initial())),
     expect: () => [
-      isA<PokemonLoading>(),
       isA<PokemonLoaded>(),
     ],
   );

@@ -21,9 +21,6 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
   Future<void> _fetchPokemons(
       FetchPokemonEvent event, Emitter<PokemonState> emit) async {
     final alreadyLoaded = _retrieveAlreadyLoadedPokemons();
-
-    emit(PokemonLoading());
-
     final response = await fetchUsecase(event.params);
     final nextPage = _extractPageParams(response.next);
 
