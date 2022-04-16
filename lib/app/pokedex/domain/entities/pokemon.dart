@@ -3,10 +3,10 @@ class Pokemon {
   const Pokemon({
     required this.number,
     required this.name,
-    required this.url,
+    required this.portrait,
   });
 
   final String number;
   final String name;
-  final String url;
+  final String portrait;
 }
