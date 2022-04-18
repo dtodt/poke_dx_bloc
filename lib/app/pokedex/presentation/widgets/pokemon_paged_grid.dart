@@ -5,8 +5,8 @@ import 'package:pokedx/app/pokedex/domain/entities/pokemon.dart';
 import 'package:pokedx/app/pokedex/presentation/widgets/pokemon_card.dart';
 
 /// A gridview of pokemon.
-class PagedPokemonGrid extends StatelessWidget {
-  const PagedPokemonGrid({
+class PokemonPagedGrid extends StatelessWidget {
+  const PokemonPagedGrid({
     Key? key,
     required this.data,
   }) : super(key: key);

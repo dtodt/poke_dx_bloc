@@ -27,4 +27,18 @@ void main() {
       isA<PokemonLoaded>(),
     ],
   );
+
+  blocTest<PokemonBloc, PokemonState>(
+    'should emit pokemon initial, loaded',
+    build: () {
+      when(() => fetchUsecase.call(PageParams.initial()))
+          .thenAnswer((_) async => kCharizardResponse);
+      return PokemonBloc(fetchUsecase);
+    },
+    act: (bloc) => bloc.add(BackToTheTopEvent()),
+    expect: () => [
+      isA<PokemonInitial>(),
+      isA<PokemonLoaded>(),
+    ],
+  );
 }
