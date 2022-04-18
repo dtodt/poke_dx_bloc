@@ -8,3 +8,5 @@ class FetchPokemonEvent implements PokemonEvent {
 
   final PageParams params;
 }
+
+class BackToTheTopEvent implements PokemonEvent {}

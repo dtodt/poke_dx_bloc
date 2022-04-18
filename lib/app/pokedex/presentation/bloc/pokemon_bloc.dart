@@ -15,7 +15,14 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
   final IPokemonFetch fetchUsecase;
 
   PokemonBloc(this.fetchUsecase) : super(PokemonInitial()) {
+    on<BackToTheTopEvent>(_refreshList, transformer: droppable());
     on<FetchPokemonEvent>(_fetchPokemons, transformer: droppable());
+  }
+
+  Future<void> _refreshList(
+      BackToTheTopEvent event, Emitter<PokemonState> emit) async {
+    emit(PokemonInitial());
+    await _fetchPokemons(FetchPokemonEvent(PageParams.initial()), emit);
   }
 
   Future<void> _fetchPokemons(
