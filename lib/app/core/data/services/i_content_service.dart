@@ -6,8 +6,8 @@ abstract class IContentService {
   ///
   /// @param headers Optional headers to send with the request.
   ///
-  /// @return The content as a map.
+  /// @return The dynamic content.
   ///
   /// @throws Exception if the content could not be retrieved.
-  Future<Map<String, dynamic>> read(String url, {Map<String, String>? headers});
+  Future<dynamic> read(String url, {Map<String, String>? headers});
 }
