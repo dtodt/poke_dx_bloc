@@ -1,4 +1,4 @@
-import 'package:pokedx/app/app_constants.dart';
+import 'package:pokedx/app/configs/constants.dart';
 import 'package:pokedx/app/pokedex/domain/entities/pokemon.dart';
 import 'package:pokedx/app/pokedex/domain/value_objects/pokemon_response.dart';
 

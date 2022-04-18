@@ -1,4 +1,4 @@
-import 'package:pokedx/app/app_constants.dart';
+import 'package:pokedx/app/configs/constants.dart';
 import 'package:pokedx/app/core/data/helpers/captalize_helper.dart';
 import 'package:pokedx/app/pokedex/domain/entities/pokemon.dart';
 

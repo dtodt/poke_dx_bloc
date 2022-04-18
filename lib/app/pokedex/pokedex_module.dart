@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedx/app/app_constants.dart';
+import 'package:pokedx/app/configs/constants.dart';
 import 'package:pokedx/app/pokedex/data/datasources/i_pokemon_remote_ds.dart';
 import 'package:pokedx/app/pokedex/data/repositories/pokemon_repository.dart';
 import 'package:pokedx/app/pokedex/domain/repositories/i_pokemon_repository.dart';

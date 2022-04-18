@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pokedx/app/app_constants.dart';
+import 'package:pokedx/app/configs/constants.dart';
 import 'package:pokedx/app/pokedex/domain/value_objects/page_params.dart';
 import 'package:pokedx/app/pokedex/presentation/helpers/page_param_helper.dart';
 
