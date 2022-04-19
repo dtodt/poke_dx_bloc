@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-const kBug = Color(0xFFa8b821);
-const kDark = Color(0xFF776554);
-const kDragon = Color(0xFF623bd5);
-const kElectric = Color(0xFFf8b00f);
-const kFairy = Color(0xFFf8b8e8);
-const kFighting = Color(0xFFe83001);
-const kFire = Color(0xFFf08030);
-const kFlying = Color(0xFF9f94be);
-const kGhost = Color(0xFF5d4674);
-const kGrass = Color(0xFF78c851);
-const kGround = Color(0xFFd8e02f);
-const kIce = Color(0xFF98d9d8);
-const kNormal = Color(0xFFa8a8a8);
-const kPoison = Color(0xFFa040a0);
-const kPsychic = Color(0xFFf85888);
-const kRock = Color(0xFFb8a038);
-const kSteel = Color(0xFFb1adbb);
-const kWater = Color(0xFF6890f0);
+const kBug = Color(0xFFA6B91A);
+const kDark = Color(0xFF705746);
+const kDragon = Color(0xFF6F35FC);
+const kElectric = Color(0xFFF7D02C);
+const kFairy = Color(0xFFD685AD);
+const kFighting = Color(0xFFC22E28);
+const kFire = Color(0xFFEE8130);
+const kFlying = Color(0xFFA98FF3);
+const kGhost = Color(0xFF735797);
+const kGrass = Color(0xFF7AC74C);
+const kGround = Color(0xFFE2BF65);
+const kIce = Color(0xFF96D9D6);
+const kNormal = Color(0xFFA8A77A);
+const kPoison = Color(0xFFA33EA1);
+const kPsychic = Color(0xFFF95587);
+const kRock = Color(0xFFB6A136);
+const kSteel = Color(0xFFB7B7CE);
+const kWater = Color(0xFF6390F0);
 
 const typeColorMap = {
   'Bug': kBug,

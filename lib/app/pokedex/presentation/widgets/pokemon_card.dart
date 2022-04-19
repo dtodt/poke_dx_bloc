@@ -12,6 +12,7 @@ class PokemonCard extends StatelessWidget {
     required this.color,
     required this.name,
     required this.number,
+    required this.types,
     required this.portrait,
     this.onTap,
   }) : super(key: key);
@@ -19,6 +20,7 @@ class PokemonCard extends StatelessWidget {
   final Color color;
   final String name;
   final String number;
+  final Set<String> types;
   final Widget portrait;
   final GestureTapCallback? onTap;
 
@@ -37,7 +39,7 @@ class PokemonCard extends StatelessWidget {
               CardWatermark(cardHeight: _height, size: _pokeballSize),
               CardPortrait(child: portrait, size: _pokemonSize),
               CardIndex(number: number),
-              CardContent(name: name, number: number),
+              CardContent(name: name, number: number, types: types),
             ],
             color: color,
             onTap: onTap,
@@ -129,7 +131,7 @@ class CardIndex extends StatelessWidget {
         style: TextStyle(
           fontSize: 14.0,
           fontWeight: FontWeight.bold,
-          color: Colors.white.withOpacity(0.14),
+          color: Colors.black.withOpacity(0.14),
         ),
       ),
     );
@@ -161,16 +163,54 @@ class CardPortrait extends StatelessWidget {
   }
 }
 
+class CardType extends StatelessWidget {
+  const CardType({
+    Key? key,
+    this.color = Colors.white,
+    required this.name,
+  }) : super(key: key);
+
+  final Color color;
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 19.0,
+        vertical: 6.0,
+      ),
+      decoration: ShapeDecoration(
+        shape: const StadiumBorder(),
+        color: color.withOpacity(0.2),
+      ),
+      child: Text(
+        name,
+        textScaleFactor: 1,
+        style: TextStyle(
+          fontSize: 12.0,
+          height: 0.8,
+          fontWeight: FontWeight.bold,
+          color: color,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+}
+
 /// The pokemon name.
 class CardContent extends StatelessWidget {
   const CardContent({
     Key? key,
     required this.name,
     required this.number,
+    required this.types,
   }) : super(key: key);
 
   final String name;
   final String number;
+  final Set<String> types;
 
   @override
   Widget build(BuildContext context) {
@@ -192,6 +232,13 @@ class CardContent extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            ...types.map(
+              (type) => Padding(
+                padding: const EdgeInsets.only(bottom: 6),
+                child: CardType(name: type),
               ),
             ),
           ],
