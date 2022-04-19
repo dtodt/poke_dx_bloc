@@ -22,6 +22,9 @@ class _PokemonListPageState extends State<PokemonListPage>
 
   @override
   Widget build(BuildContext context) {
+    final maxWidth = MediaQuery.of(context).size.width;
+    final gridColumnCount = _calcGridColumnCount(maxWidth);
+
     return PokeballBackground(
       child: SafeArea(
         child: BlocBuilder<PokemonBloc, PokemonState>(
@@ -44,6 +47,7 @@ class _PokemonListPageState extends State<PokemonListPage>
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 20),
                     sliver: PokemonPagedGrid(
+                      columnCount: gridColumnCount,
                       data: state.pokemons,
                     ),
                   ),
@@ -84,6 +88,18 @@ class _PokemonListPageState extends State<PokemonListPage>
       setState(() {
         appBarTransparent = transparent;
       });
+    }
+  }
+
+  int _calcGridColumnCount(double maxWidth) {
+    if (maxWidth < 600) {
+      return 2;
+    } else if (maxWidth < 800) {
+      return 3;
+    } else if (maxWidth < 1000) {
+      return 4;
+    } else {
+      return 5;
     }
   }
 

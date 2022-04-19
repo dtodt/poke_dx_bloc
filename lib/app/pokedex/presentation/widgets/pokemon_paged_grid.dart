@@ -9,9 +9,11 @@ import 'package:pokedx/app/pokedex/presentation/widgets/pokemon_card.dart';
 class PokemonPagedGrid extends StatelessWidget {
   const PokemonPagedGrid({
     Key? key,
+    this.columnCount = 2,
     required this.data,
   }) : super(key: key);
 
+  final int columnCount;
   final List<Pokemon> data;
 
   @override
@@ -38,9 +40,9 @@ class PokemonPagedGrid extends StatelessWidget {
         ),
         childCount: data.length,
       ),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: 1.5,
-        crossAxisCount: 2,
+        crossAxisCount: columnCount,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
       ),
