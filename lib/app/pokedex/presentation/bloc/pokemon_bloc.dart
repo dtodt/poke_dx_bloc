@@ -7,6 +7,7 @@ import 'package:pokedx/app/pokedex/domain/entities/pokemon.dart';
 import 'package:pokedx/app/pokedex/domain/usecases/pokemon_fetch.dart';
 import 'package:pokedx/app/pokedex/domain/value_objects/page_params.dart';
 import 'package:pokedx/app/pokedex/presentation/helpers/page_param_helper.dart';
+import 'package:pokedx/app/pokedex/presentation/helpers/pokemon_info_helper.dart';
 
 part 'pokemon_event.dart';
 part 'pokemon_state.dart';
@@ -29,12 +30,15 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
       FetchPokemonEvent event, Emitter<PokemonState> emit) async {
     final alreadyLoaded = _retrieveAlreadyLoadedPokemons();
     final response = await fetchUsecase(event.params);
-    final nextPage = _extractPageParams(response.next);
+    final filledResponse = PokemonInfoHelper.fillAbstentInfo(response.results);
+    if (filledResponse.isNotEmpty) {
+      final nextPage = _extractPageParams(response.next);
 
-    emit(PokemonLoaded(
-      [...alreadyLoaded, ...response.results],
-      nextPage: nextPage,
-    ));
+      emit(PokemonLoaded(
+        [...alreadyLoaded, ...filledResponse],
+        nextPage: nextPage,
+      ));
+    }
   }
 
   List<Pokemon> _retrieveAlreadyLoadedPokemons() {
