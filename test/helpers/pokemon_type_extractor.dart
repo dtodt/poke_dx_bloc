@@ -5,6 +5,7 @@ import 'package:pokedx/app/pokedex/domain/value_objects/page_params.dart';
 
 const onePage = PageParams(limit: 1, offset: 0);
 
+// ignore_for_file: type=lint
 /// The original rest api pokeapi.co/api/v2/pokemon/ does not return the type on the main list.
 /// So we need to extrat it and add it to the list.
 Future<void> main() async {
