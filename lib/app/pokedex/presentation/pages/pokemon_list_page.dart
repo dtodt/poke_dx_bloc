@@ -93,7 +93,9 @@ class _PokemonListPageState extends State<PokemonListPage>
   }
 
   bool _canFetchMoreData(ScrollMetrics metrics, bool hasNextPage) {
-    return metrics.pixels >= (metrics.maxScrollExtent - 100.0) && hasNextPage;
+    return metrics.pixels.floor() >=
+            (metrics.maxScrollExtent - 100.0).floor() &&
+        hasNextPage;
   }
 
   void _checkFabVisible(AxisDirection direction, ScrollMetrics metrics) {
