@@ -4,9 +4,11 @@ class Pokemon {
     required this.number,
     required this.name,
     required this.portrait,
+    required this.types,
   });
 
   final String number;
   final String name;
   final String portrait;
+  final List<String> types;
 }

@@ -10,11 +10,13 @@ const kCharizard = Pokemon(
   number: '6',
   name: 'Charizard',
   portrait: '$kPortraitUrl/6.png',
+  types: [],
 );
 const kMew = Pokemon(
   number: '151',
   name: 'Mew',
   portrait: '$kPortraitUrl/151.png',
+  types: [],
 );
 
 ///? Pokemon Api response

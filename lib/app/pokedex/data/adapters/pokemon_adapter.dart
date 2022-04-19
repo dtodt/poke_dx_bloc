@@ -13,6 +13,7 @@ class PokemonAdapter {
       number: number,
       name: name,
       portrait: portrait,
+      types: [],
     );
   }
 
