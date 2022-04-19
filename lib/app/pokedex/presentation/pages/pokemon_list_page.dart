@@ -22,6 +22,9 @@ class _PokemonListPageState extends State<PokemonListPage>
 
   @override
   Widget build(BuildContext context) {
+    final maxWidth = MediaQuery.of(context).size.width;
+    final gridColumnCount = _calcGridColumnCount(maxWidth);
+
     return PokeballBackground(
       child: SafeArea(
         child: BlocBuilder<PokemonBloc, PokemonState>(
@@ -44,6 +47,7 @@ class _PokemonListPageState extends State<PokemonListPage>
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 20),
                     sliver: PokemonPagedGrid(
+                      columnCount: gridColumnCount,
                       data: state.pokemons,
                     ),
                   ),
@@ -87,13 +91,28 @@ class _PokemonListPageState extends State<PokemonListPage>
     }
   }
 
+  int _calcGridColumnCount(double maxWidth) {
+    if (maxWidth < 400) {
+      return 1;
+    } else if (maxWidth < 600) {
+      return 2;
+    } else if (maxWidth < 800) {
+      return 3;
+    } else if (maxWidth < 1000) {
+      return 4;
+    } else {
+      return 5;
+    }
+  }
+
   double _calcInRangePercentageUp(ScrollMetrics metrics) {
     return ((metrics.pixels - metrics.maxScrollExtent) * 100) /
         (metrics.viewportDimension - metrics.maxScrollExtent);
   }
 
   bool _canFetchMoreData(ScrollMetrics metrics, bool hasNextPage) {
-    return metrics.pixels >= (metrics.maxScrollExtent - 100.0) && hasNextPage;
+    return metrics.pixels.floor() == (metrics.maxScrollExtent).floor() &&
+        hasNextPage;
   }
 
   void _checkFabVisible(AxisDirection direction, ScrollMetrics metrics) {
@@ -115,6 +134,7 @@ class _PokemonListPageState extends State<PokemonListPage>
   void _handleFabTap() {
     context.read<PokemonBloc>().add(BackToTheTopEvent());
     setState(() {
+      appBarTransparent = true;
       backButtonVisible = false;
     });
   }
