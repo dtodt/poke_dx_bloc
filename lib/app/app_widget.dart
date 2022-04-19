@@ -17,11 +17,12 @@ class AppWidget extends StatelessWidget {
         theme: ThemeData(
           brightness: Brightness.dark,
           pageTransitionsTheme: PageTransitionsHelper(),
-          primarySwatch: Colors.red,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         themeMode: ThemeMode.dark,
-        home: const PokemonListPage(),
+        routes: <String, WidgetBuilder>{
+          '/': (_) => const PokemonListPage(),
+        },
       ),
       providers: [
         ...coreModule,
