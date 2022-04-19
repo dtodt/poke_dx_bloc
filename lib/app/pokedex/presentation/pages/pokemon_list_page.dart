@@ -92,7 +92,9 @@ class _PokemonListPageState extends State<PokemonListPage>
   }
 
   int _calcGridColumnCount(double maxWidth) {
-    if (maxWidth < 600) {
+    if (maxWidth < 400) {
+      return 1;
+    } else if (maxWidth < 600) {
       return 2;
     } else if (maxWidth < 800) {
       return 3;
