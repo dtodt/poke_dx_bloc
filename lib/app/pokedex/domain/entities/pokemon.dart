@@ -10,5 +10,5 @@ class Pokemon {
   final String number;
   final String name;
   final String portrait;
-  final List<String> types;
+  final Set<String> types;
 }
