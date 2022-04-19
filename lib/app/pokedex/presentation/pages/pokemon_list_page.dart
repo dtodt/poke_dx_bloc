@@ -93,8 +93,7 @@ class _PokemonListPageState extends State<PokemonListPage>
   }
 
   bool _canFetchMoreData(ScrollMetrics metrics, bool hasNextPage) {
-    return metrics.pixels.floor() >=
-            (metrics.maxScrollExtent - 100.0).floor() &&
+    return metrics.pixels.floor() == (metrics.maxScrollExtent).floor() &&
         hasNextPage;
   }
 
@@ -117,6 +116,7 @@ class _PokemonListPageState extends State<PokemonListPage>
   void _handleFabTap() {
     context.read<PokemonBloc>().add(BackToTheTopEvent());
     setState(() {
+      appBarTransparent = true;
       backButtonVisible = false;
     });
   }
