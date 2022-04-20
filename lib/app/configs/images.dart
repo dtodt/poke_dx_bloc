@@ -11,7 +11,7 @@ class AppImages {
   static const bug = _Image('types/Bug.png');
   static const dark = _Image('types/Dark.png');
   static const dragon = _Image('types/Dragon.png');
-  static const electric = _Image('types/Electrict.png');
+  static const electric = _Image('types/Electric.png');
   static const fairy = _Image('types/Fairy.png');
   static const fighting = _Image('types/Fighting.png');
   static const fire = _Image('types/Fire.png');
