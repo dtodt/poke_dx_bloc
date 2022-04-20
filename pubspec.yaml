@@ -38,6 +38,7 @@ dependencies:
 
 dev_dependencies:
   bloc_test: ^9.0.3
+  flutter_launcher_icons_maker: ^0.10.2
 
   flutter_lints: ^1.0.4
 
@@ -51,6 +52,12 @@ flutter:
   assets:
     - images/
     - images/types/
+
+flutter_icons:
+  android: true
+  ios: true
+  web: true
+  image_path: images/pokedex.png
 
 flutter_native_splash:
   color: '#F21B42'
