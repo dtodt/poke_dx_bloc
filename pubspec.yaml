@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
 
   flutter_bloc: ^8.0.1
+  flutter_native_splash: ^2.1.6
 
   http: ^0.13.4
 
@@ -47,6 +48,11 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
   assets:
     - images/
+    - images/types/
+
+flutter_native_splash:
+  color: '#F21B42'
+  fullscreen: true
+  image: images/pokedex.png
