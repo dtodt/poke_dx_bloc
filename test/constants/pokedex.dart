@@ -1,5 +1,6 @@
 import 'package:pokedx/app/configs/constants.dart';
 import 'package:pokedx/app/pokedex/domain/entities/pokemon.dart';
+import 'package:pokedx/app/pokedex/domain/value_objects/page_params.dart';
 import 'package:pokedx/app/pokedex/domain/value_objects/pokemon_response.dart';
 
 ///? Pokemon Entity
@@ -47,14 +48,14 @@ const kMewResponseMap = {
 
 const kCharizardResponse = PokemonResponse(
   count: 1,
-  next: '$kRestPokemonUrl?offset=6&limit=1',
-  previous: '$kRestPokemonUrl?offset=4&limit=1',
+  next: PageParams(limit: 1, offset: 6),
+  previous: PageParams(limit: 1, offset: 4),
   results: [kCharizard],
 );
 const kMeyResponse = PokemonResponse(
   count: 1,
-  next: '',
-  previous: '',
+  next: null,
+  previous: null,
   results: [kMew],
 );
 

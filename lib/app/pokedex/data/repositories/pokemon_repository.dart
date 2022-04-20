@@ -1,4 +1,4 @@
-import 'package:pokedx/app/pokedex/data/adapters/pokemon_response_adapter.dart';
+import 'package:pokedx/app/pokedex/data/adapters/pokemon_response_rest_adapter.dart';
 import 'package:pokedx/app/pokedex/data/datasources/i_pokemon_remote_ds.dart';
 import 'package:pokedx/app/pokedex/domain/repositories/i_pokemon_repository.dart';
 import 'package:pokedx/app/pokedex/domain/value_objects/page_params.dart';
@@ -14,6 +14,6 @@ class PokemonRepository implements IPokemonRepository {
   Future<PokemonResponse> list(PageParams params) async {
     final result = await _pokemonRemoteDs.list(params);
 
-    return PokemonResponseAdapter.fromMap(result);
+    return PokemonResponseRestAdapter.fromMap(result);
   }
 }

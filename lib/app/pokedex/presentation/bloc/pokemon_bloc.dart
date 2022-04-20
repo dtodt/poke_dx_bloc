@@ -6,7 +6,6 @@ import 'package:meta/meta.dart';
 import 'package:pokedx/app/pokedex/domain/entities/pokemon.dart';
 import 'package:pokedx/app/pokedex/domain/usecases/pokemon_fetch.dart';
 import 'package:pokedx/app/pokedex/domain/value_objects/page_params.dart';
-import 'package:pokedx/app/pokedex/presentation/helpers/page_param_helper.dart';
 import 'package:pokedx/app/pokedex/presentation/helpers/pokemon_info_helper.dart';
 
 part 'pokemon_event.dart';
@@ -32,11 +31,9 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
     final response = await fetchUsecase(event.params);
     final filledResponse = PokemonInfoHelper.fillAbstentInfo(response.results);
     if (filledResponse.isNotEmpty) {
-      final nextPage = _extractPageParams(response.next);
-
       emit(PokemonLoaded(
         [...alreadyLoaded, ...filledResponse],
-        nextPage: nextPage,
+        nextPage: response.next,
       ));
     }
   }
@@ -46,9 +43,5 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
       return (state as PokemonLoaded).pokemons;
     }
     return [];
-  }
-
-  PageParams? _extractPageParams(String next) {
-    return PageParamsHelper.extractPageParam(next);
   }
 }

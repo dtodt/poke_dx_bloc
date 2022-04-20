@@ -3,7 +3,7 @@ import 'package:pokedx/app/core/data/helpers/captalize_helper.dart';
 import 'package:pokedx/app/pokedex/domain/entities/pokemon.dart';
 
 ///? Handles json conversions.
-class PokemonAdapter {
+class PokemonRestAdapter {
   static Pokemon fromMap(Map<String, dynamic> map) {
     final name = CaptalizeHelper.captalizeAll(map['name']);
     final number = _extractNumber(map['url']);

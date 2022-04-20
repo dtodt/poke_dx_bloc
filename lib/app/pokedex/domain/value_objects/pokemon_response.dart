@@ -1,4 +1,5 @@
 import 'package:pokedx/app/pokedex/domain/entities/pokemon.dart';
+import 'package:pokedx/app/pokedex/domain/value_objects/page_params.dart';
 
 /// Pokemon reponse
 class PokemonResponse {
@@ -10,7 +11,7 @@ class PokemonResponse {
   });
 
   final int count;
-  final String next;
-  final String previous;
+  final PageParams? next;
+  final PageParams? previous;
   final List<Pokemon> results;
 }
