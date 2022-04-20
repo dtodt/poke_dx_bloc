@@ -177,7 +177,7 @@ class CardType extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: 19.0,
+        horizontal: 12.0,
         vertical: 6.0,
       ),
       decoration: ShapeDecoration(
@@ -217,29 +217,29 @@ class CardContent extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 36, 16, 16),
+        padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            Hero(
-              tag: '$number$name',
-              child: Text(
-                name,
-                style: const TextStyle(
-                  fontSize: _fontSize,
-                  height: 0.7,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+            Text(
+              name,
+              style: const TextStyle(
+                fontSize: _fontSize,
+                height: 0.7,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
             ),
             const SizedBox(height: 10),
-            ...types.map(
-              (type) => Padding(
-                padding: const EdgeInsets.only(bottom: 6),
-                child: CardType(name: type),
-              ),
+            Wrap(
+              direction: Axis.vertical,
+              spacing: 6.0,
+              children: [
+                ...types.map((type) {
+                  return CardType(name: type);
+                }),
+              ],
             ),
           ],
         ),

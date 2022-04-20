@@ -31,8 +31,40 @@
 
     <title>Poke DX</title>
     <link rel="manifest" href="manifest.json" />
+    <script src="splash/splash.js"></script>
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      name="viewport"
+    />
+    <link rel="stylesheet" type="text/css" href="splash/style.css" />
   </head>
   <body>
+    <picture id="splash">
+      <source
+        srcset="
+          splash/img/light-1x.png 1x,
+          splash/img/light-2x.png 2x,
+          splash/img/light-3x.png 3x,
+          splash/img/light-4x.png 4x
+        "
+        media="(prefers-color-scheme: light)"
+      />
+      <source
+        srcset="
+          splash/img/dark-1x.png 1x,
+          splash/img/dark-2x.png 2x,
+          splash/img/dark-3x.png 3x,
+          splash/img/dark-4x.png 4x
+        "
+        media="(prefers-color-scheme: dark)"
+      />
+      <img
+        class="center"
+        aria-hidden="true"
+        src="splash/img/light-1x.png"
+        alt=""
+      />
+    </picture>
     <!-- Info when not using javascript -->
     <noscript>
       <h1>You must enable javascript to view this page.</h1>
@@ -87,14 +119,11 @@
               // When the app updates the serviceWorkerVersion changes, so we
               // need to ask the service worker to update.
               console.debug('New service worker available.')
-              cleanCache()
-                .then(() => {
-                  console.debug('Cache cleaned.')
-                  return reg.update()
-                })
-                .then(() => {
-                  waitForActivation(reg.installing)
-                })
+              cleanCache().then(() => {
+                console.debug('Cache cleaned.')
+                reg.update()
+                waitForActivation(reg.installing)
+              })
             } else {
               // Existing service worker is still good.
               console.debug('Loading app from service worker.')

@@ -25,4 +25,10 @@ flutter test --coverage
 genhtml ./coverage/lcov.info -o coverage/html
 ```
 
+## References
+
+- [Saepul Nahwan] with [Pokedex App design]
+
 [site]: https://poke-dx.web.app/
+[saepul nahwan]: https://dribbble.com/saepulnahwan23
+[pokedex app design]: https://dribbble.com/shots/6545819-Pokedex-App

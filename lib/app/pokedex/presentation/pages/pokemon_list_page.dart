@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:pokedx/app/configs/images.dart';
 import 'package:pokedx/app/core/presentation/mixins/state_ready_aware.dart';
 import 'package:pokedx/app/pokedex/domain/value_objects/page_params.dart';
 import 'package:pokedx/app/pokedex/presentation/bloc/pokemon_bloc.dart';
@@ -75,8 +77,12 @@ class _PokemonListPageState extends State<PokemonListPage>
   }
 
   @override
-  void ready() {
+  void ready() async {
     context.read<PokemonBloc>().add(FetchPokemonEvent(PageParams.initial()));
+
+    await AppImages.precacheAssets(context);
+
+    FlutterNativeSplash.remove();
   }
 
   void _checkAppBarOpacity(ScrollMetrics metrics) {
@@ -92,9 +98,7 @@ class _PokemonListPageState extends State<PokemonListPage>
   }
 
   int _calcGridColumnCount(double maxWidth) {
-    if (maxWidth < 400) {
-      return 1;
-    } else if (maxWidth < 600) {
+    if (maxWidth < 600) {
       return 2;
     } else if (maxWidth < 800) {
       return 3;
