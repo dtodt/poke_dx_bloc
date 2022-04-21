@@ -82,9 +82,8 @@ const kMeyResponse = PokemonResponse(
 const kParamUrl = '$kRestPokemonUrl?offset=10&limit=1';
 
 ///? Graph request
-const kGraphQuery = '''
-query pokemon_list {
-  pokemon_v2_pokemon(order_by: {id: asc}, where: {is_default: {_eq: true}}, limit: 15, offset: 5) {
+const kGraphQuery = '''query pokemon_list {
+  pokemon_v2_pokemon(order_by: {id: asc}, where: {is_default: {_eq: true}}, limit: 20, offset: 0) {
     id
     name
     pokemon_v2_pokemontypes(order_by: {slot: asc}) {
@@ -93,22 +92,21 @@ query pokemon_list {
       }
     }
   }
-}
-''';
+}''';
 
 const kVariableMap = {
   'test': 'test',
 };
 
 const kGraphRequestJsonString =
-    '{"query":"query pokemon_list {\\n  pokemon_v2_pokemon(order_by: {id: asc}, where: {is_default: {_eq: true}}, limit: 15, offset: 5) {\\n    id\\n    name\\n    pokemon_v2_pokemontypes(order_by: {slot: asc}) {\\n      pokemon_v2_type {\\n        name\\n      }\\n    }\\n  }\\n}\\n","variables":{"test":"test"}}';
+    '{"query":"query pokemon_list {\\n  pokemon_v2_pokemon(order_by: {id: asc}, where: {is_default: {_eq: true}}, limit: 20, offset: 0) {\\n    id\\n    name\\n    pokemon_v2_pokemontypes(order_by: {slot: asc}) {\\n      pokemon_v2_type {\\n        name\\n      }\\n    }\\n  }\\n}","variables":{}}';
 
 const kGraphRequestMap = {
   'query': kGraphQuery,
-  'variables': kVariableMap,
+  'variables': {},
 };
 
 const kGraphRequest = GraphRequest(
   query: kGraphQuery,
-  variables: kVariableMap,
+  variables: {},
 );
