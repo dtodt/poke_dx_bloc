@@ -60,6 +60,6 @@ flutter_icons:
   image_path: images/pokedex.png
 
 flutter_native_splash:
-  color: '#F21B42'
+  color: '#303030'
   fullscreen: true
   image: images/pokedex.png
