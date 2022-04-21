@@ -1,3 +1,4 @@
+import 'package:pokedx/app/pokedex/data/adapters/pokemon_response_graph_adapter.dart';
 import 'package:pokedx/app/pokedex/data/adapters/pokemon_response_rest_adapter.dart';
 import 'package:pokedx/app/pokedex/data/datasources/i_pokemon_remote_ds.dart';
 import 'package:pokedx/app/pokedex/domain/repositories/i_pokemon_repository.dart';
@@ -13,7 +14,14 @@ class PokemonRepository implements IPokemonRepository {
   @override
   Future<PokemonResponse> list(PageParams params) async {
     final result = await _pokemonRemoteDs.list(params);
+    if (isGraph(result)) {
+      return PokemonResponseGraphAdapter.fromMap(result, params);
+    } else {
+      return PokemonResponseRestAdapter.fromMap(result);
+    }
+  }
 
-    return PokemonResponseRestAdapter.fromMap(result);
+  bool isGraph(Map<String, dynamic> result) {
+    return result.containsKey('data');
   }
 }
