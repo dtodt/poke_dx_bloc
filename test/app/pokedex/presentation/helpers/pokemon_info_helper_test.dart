@@ -16,4 +16,11 @@ void main() {
     final result = PokemonInfoHelper.fillAbstentInfo([kMissigno]);
     expect(result, isEmpty);
   });
+
+  test('should ignore changes when has the types', () async {
+    final result = PokemonInfoHelper.fillAbstentInfo([kCharizardTyped]);
+    expect(result, isNotEmpty);
+    expect(result[0].types, isNotEmpty);
+    expect(setEquals(result[0].types, kCharizardTyped.types), isTrue);
+  });
 }
