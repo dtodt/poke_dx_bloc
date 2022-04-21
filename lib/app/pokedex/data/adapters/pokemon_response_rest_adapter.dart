@@ -6,7 +6,6 @@ import 'package:pokedx/app/pokedex/domain/value_objects/pokemon_response.dart';
 class PokemonResponseRestAdapter {
   static PokemonResponse fromMap(Map<String, dynamic> map) {
     return PokemonResponse(
-      count: map['count'] ?? 0,
       next: _extractPageParam(map['next']),
       previous: _extractPageParam(map['previous']),
       results: PokemonRestAdapter.fromList(map['results'] as List),

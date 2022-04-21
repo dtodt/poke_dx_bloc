@@ -20,7 +20,7 @@ void main() {
 
   test('should return a list of pokemons', () async {
     when(() => datasource.list(PageParams.initial()))
-        .thenAnswer((_) => Future.value(kMewResponseMap));
+        .thenAnswer((_) => Future.value(kMewRestResponseMap));
 
     final result = await repository.list(PageParams.initial());
     expect(result, isA<PokemonResponse>());

@@ -6,13 +6,13 @@ import '../../../../constants.dart';
 
 void main() {
   test('should convert a map into pokemon', () async {
-    final result = PokemonRestAdapter.fromMap(kMewMap);
+    final result = PokemonRestAdapter.fromMap(kMewRestMap);
     expect(result, isA<Pokemon>());
     expect(result.number, equals(kMew.number));
   });
 
   test('should convert a list of map into a list of pokemon', () async {
-    final result = PokemonRestAdapter.fromList([kMewMap]);
+    final result = PokemonRestAdapter.fromList([kMewRestMap]);
     expect(result, isA<List<Pokemon>>());
     expect(result, isNotEmpty);
   });

@@ -19,7 +19,7 @@ void main() {
 
   test('should list successfully', () async {
     when(() => service.read('/pokemon?limit=20&offset=0'))
-        .thenAnswer((_) async => kMewResponseMap);
+        .thenAnswer((_) async => kMewRestResponseMap);
 
     final result = await datasource.list(PageParams.initial());
     expect(result, isA<Map<String, dynamic>>());
