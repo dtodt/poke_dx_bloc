@@ -3,7 +3,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:pokedx/app/core/data/services/i_content_service.dart';
 import 'package:pokedx/app/pokedex/data/datasources/i_pokemon_remote_ds.dart';
 import 'package:pokedx/app/pokedex/domain/value_objects/page_params.dart';
-import 'package:pokedx/app/pokedex/external/datasources/rest_pokemon_remote_ds.dart';
+import 'package:pokedx/app/pokedex/external/datasources/graph_pokemon_remote_ds.dart';
 
 import '../../../../constants.dart';
 import '../../../../mocks.dart';
@@ -14,12 +14,12 @@ void main() {
 
   setUpAll(() {
     service = ContentServiceMock();
-    datasource = RestPokemonRemoteDs(service, '/pokemon');
+    datasource = GraphPokemonRemoteDs(service, '/pokemon');
   });
 
   test('should list successfully', () async {
-    when(() => service.read('/pokemon?limit=20&offset=0'))
-        .thenAnswer((_) async => kMewRestResponseMap);
+    when(() => service.post('/pokemon', body: kGraphRequestJsonString))
+        .thenAnswer((_) async => kCharizardGraphResponseMap);
 
     final result = await datasource.list(PageParams.initial());
     expect(result, isA<Map<String, dynamic>>());

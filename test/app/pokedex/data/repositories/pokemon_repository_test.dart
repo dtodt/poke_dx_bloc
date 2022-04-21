@@ -18,9 +18,17 @@ void main() {
     repository = PokemonRepository(datasource);
   });
 
-  test('should return a list of pokemons', () async {
+  test('should return a list of pokemons with rest', () async {
     when(() => datasource.list(PageParams.initial()))
-        .thenAnswer((_) => Future.value(kMewResponseMap));
+        .thenAnswer((_) => Future.value(kMewRestResponseMap));
+
+    final result = await repository.list(PageParams.initial());
+    expect(result, isA<PokemonResponse>());
+  });
+
+  test('should return a list of pokemons with graph', () async {
+    when(() => datasource.list(PageParams.initial()))
+        .thenAnswer((_) => Future.value(kCharizardGraphResponseMap));
 
     final result = await repository.list(PageParams.initial());
     expect(result, isA<PokemonResponse>());

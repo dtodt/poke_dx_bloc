@@ -3,17 +3,18 @@ import 'package:pokedx/app/core/data/helpers/captalize_helper.dart';
 import 'package:pokedx/app/pokedex/domain/entities/pokemon.dart';
 
 ///? Handles json conversions.
-class PokemonAdapter {
+class PokemonGraphAdapter {
   static Pokemon fromMap(Map<String, dynamic> map) {
     final name = CaptalizeHelper.captalizeAll(map['name']);
-    final number = _extractNumber(map['url']);
+    final number = map['id'];
     final portrait = '$kPortraitUrl/$number.png';
+    final types = _extractTypes(map['pokemon_v2_pokemontypes'] as List);
 
     return Pokemon(
-      number: number,
+      number: '$number',
       name: name,
       portrait: portrait,
-      types: {},
+      types: types,
     );
   }
 
@@ -21,8 +22,10 @@ class PokemonAdapter {
     return list.map((json) => fromMap(json)).toList();
   }
 
-  static String _extractNumber(String url) {
-    final urlParts = url.split('/');
-    return urlParts.length > 1 ? urlParts[urlParts.length - 2] : '';
+  static Set<String> _extractTypes(List<dynamic> types) {
+    return types
+        .map((type) =>
+            CaptalizeHelper.captalizeAll(type['pokemon_v2_type']['name']))
+        .toSet();
   }
 }

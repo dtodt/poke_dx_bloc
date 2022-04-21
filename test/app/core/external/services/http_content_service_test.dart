@@ -1,5 +1,3 @@
-@TestOn('vm')
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pokedx/app/core/data/services/i_content_service.dart';
 import 'package:pokedx/app/core/external/services/http_content_service.dart';
@@ -25,5 +23,14 @@ void main() {
       service.read(serverUrl.resolve('/error').toString()),
       throwsClientException,
     );
+  });
+
+  test('should return a map when the post method is called', () async {
+    final result = await service.post(serverUrl.toString(), headers: {
+      'test': 'test',
+    }, body: {
+      'test': 'test',
+    });
+    expect(result, isA<Map>());
   });
 }

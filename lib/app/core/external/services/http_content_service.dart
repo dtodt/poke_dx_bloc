@@ -13,4 +13,12 @@ class HttpContentService implements IContentService {
             throw Error.throwWithStackTrace(error ?? {}, stackTrace));
     return json.decode(response);
   }
+
+  @override
+  Future<dynamic> post(String url,
+      {Map<String, String>? headers, Object? body}) async {
+    final response =
+        await http.post(Uri.parse(url), headers: headers, body: body);
+    return json.decode(response.body);
+  }
 }

@@ -109,9 +109,8 @@ class _PokemonListPageState extends State<PokemonListPage>
     }
   }
 
-  double _calcInRangePercentageUp(ScrollMetrics metrics) {
-    return ((metrics.pixels - metrics.maxScrollExtent) * 100) /
-        (metrics.viewportDimension - metrics.maxScrollExtent);
+  bool _isGoingUp(ScrollMetrics metrics) {
+    return metrics.maxScrollExtent - metrics.pixels > 150.0;
   }
 
   bool _canFetchMoreData(ScrollMetrics metrics, bool hasNextPage) {
@@ -124,7 +123,7 @@ class _PokemonListPageState extends State<PokemonListPage>
 
     if (direction == AxisDirection.up &&
         metrics.pixels > metrics.viewportDimension &&
-        _calcInRangePercentageUp(metrics) > 15.0) {
+        _isGoingUp(metrics)) {
       visible = true;
     }
 
