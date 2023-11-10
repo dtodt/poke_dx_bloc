@@ -22,6 +22,15 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+println 'Value of ANDROID_RELEASE: '
+println System.getenv('ANDROID_RELEASE')
+
+if (System.getenv('ANDROID_RELEASE')) {
+    println 'Using Android release build...'
+} else {
+    println 'Using Android debug build...'
+}
+
 android {
     namespace "app.web.pokedx"
     compileSdkVersion flutter.compileSdkVersion
@@ -50,16 +59,16 @@ android {
 
     signingConfigs {
         release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-            storePassword keystoreProperties['storePassword']
+            keyAlias System.getenv('ANDROID_RELEASE') ? keystoreProperties['keyAlias'] : null
+            keyPassword System.getenv('ANDROID_RELEASE') ? keystoreProperties['keyPassword'] : null
+            storeFile System.getenv('ANDROID_RELEASE') ? file(keystoreProperties['storeFile']) : null
+            storePassword System.getenv('ANDROID_RELEASE') ? keystoreProperties['storePassword'] : null
         }
     }
 
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            signingConfig System.getenv('ANDROID_RELEASE') ? signingConfigs.release : signingConfigs.debug
         }
     }
 }
