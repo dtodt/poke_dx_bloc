@@ -11,6 +11,10 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
+      providers: [
+        ...coreModule,
+        ...pokedexModule,
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Poke DX',
@@ -24,10 +28,6 @@ class AppWidget extends StatelessWidget {
           '/': (_) => const PokemonListPage(),
         },
       ),
-      providers: [
-        ...coreModule,
-        ...pokedexModule,
-      ],
     );
   }
 }

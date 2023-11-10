@@ -25,11 +25,11 @@ class _ListenableScrollViewState extends State<ListenableScrollView> {
   @override
   Widget build(BuildContext context) {
     return NotificationListener<ScrollNotification>(
+      onNotification: _onNotification,
       child: CustomScrollView(
         controller: _scrollController,
         slivers: widget.slivers,
       ),
-      onNotification: _onNotification,
     );
   }
 

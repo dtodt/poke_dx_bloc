@@ -28,6 +28,16 @@ class _PokemonListPageState extends State<PokemonListPage>
     final gridColumnCount = _calcGridColumnCount(maxWidth);
 
     return PokeballBackground(
+      floatingActionButton: backButtonVisible
+          ? FloatingActionButton.extended(
+              icon: const Icon(Icons.arrow_upward),
+              label: const Text('Top'),
+              onPressed: _handleFabTap,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              foregroundColor: Colors.white,
+            )
+          : null,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       child: SafeArea(
         child: BlocBuilder<PokemonBloc, PokemonState>(
           builder: (context, state) {
@@ -63,16 +73,6 @@ class _PokemonListPageState extends State<PokemonListPage>
           },
         ),
       ),
-      floatingActionButton: backButtonVisible
-          ? FloatingActionButton.extended(
-              icon: const Icon(Icons.arrow_upward),
-              label: const Text('Top'),
-              onPressed: _handleFabTap,
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              foregroundColor: Colors.white,
-            )
-          : null,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 

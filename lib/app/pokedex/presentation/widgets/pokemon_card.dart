@@ -28,21 +28,21 @@ class PokemonCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final _height = constraints.maxHeight;
-        final _pokeballSize = _height * _pokeballFraction;
-        final _pokemonSize = _height * _pokemonFraction;
+        final height = constraints.maxHeight;
+        final pokeballSize = height * _pokeballFraction;
+        final pokemonSize = height * _pokemonFraction;
 
         return CardBody(
           color: color,
           child: CardActionFeedback(
+            color: color,
+            onTap: onTap,
             children: <Widget>[
-              CardWatermark(cardHeight: _height, size: _pokeballSize),
-              CardPortrait(child: portrait, size: _pokemonSize),
+              CardWatermark(cardHeight: height, size: pokeballSize),
+              CardPortrait(size: pokemonSize, child: portrait),
               CardIndex(number: number),
               CardContent(name: name, number: number, types: types),
             ],
-            color: color,
-            onTap: onTap,
           ),
         );
       },
