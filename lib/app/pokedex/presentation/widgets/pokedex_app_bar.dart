@@ -15,6 +15,7 @@ class PokedexAppBar extends StatelessWidget {
       centerTitle: true,
       expandedHeight: 200,
       flexibleSpace: const FlexibleSpaceBar(
+        centerTitle: true,
         title: Text('Pokedex'),
       ),
       pinned: true,

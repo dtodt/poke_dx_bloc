@@ -7,6 +7,6 @@ mixin StateReadyAware<T extends StatefulWidget> on State<T> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((_) => ready());
+    WidgetsBinding.instance.addPostFrameCallback((_) => ready());
   }
 }

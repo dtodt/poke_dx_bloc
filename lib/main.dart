@@ -16,10 +16,8 @@ Future<void> main() async {
   }
 
   await fb.loadLibrary();
-  await runZonedGuarded(() async {
-    await fb.firebaseSetup();
+  await fb.firebaseSetup();
 
-    await app.loadLibrary();
-    runApp(app.AppWidget());
-  }, fb.logOnFirebase);
+  await app.loadLibrary();
+  runApp(app.AppWidget());
 }
